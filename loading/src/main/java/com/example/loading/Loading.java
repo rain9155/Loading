@@ -96,7 +96,9 @@ public class Loading {
             //新建一个ViewGroup
             FrameLayout wrapper = new FrameLayout(view.getContext());
             ViewGroup.LayoutParams viewLp = view.getLayoutParams();
-            if(viewLp != null) wrapper.setLayoutParams(viewLp);
+            if(viewLp != null) {
+                wrapper.setLayoutParams(viewLp);
+            }
             if(view.getParent() != null){
                 ViewGroup parent = ((ViewGroup)view.getParent());
                 int index = parent.indexOfChild(view);

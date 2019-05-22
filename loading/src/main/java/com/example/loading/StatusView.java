@@ -28,6 +28,8 @@ public class StatusView extends RelativeLayout {
     protected OnClickListener reloadClick;
     protected View wrappedView;
     private static final LayoutParams DEFAULT_LP = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+    private static final LayoutParams DEFAULT_LP2 = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
 
     public StatusView(Context context) {
         super(context, null);
