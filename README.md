@@ -22,9 +22,7 @@
 ![loading2](/screenshots/loading2.gif)
 ## DownLoad
 更多请下载查看，
-![qrcode](/screenshots/QRcode.png)
-{% asset_img QRcode.png QRcode %}
-
+![qrcode](/screenshots/ORcode.png)
 ## How to install?
 
 ### step1:
