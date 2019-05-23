@@ -1,4 +1,4 @@
-package com.example.loading;
+package com.example.loading2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.loading.activity.ActionBarActivity;
-import com.example.loading.activity.ToolBarActivity;
+import com.example.loading2.activity.ActionBarActivity;
+import com.example.loading2.activity.ToolBarActivity;
 
 public class ActivityActivity extends AppCompatActivity {
 

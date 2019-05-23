@@ -1,4 +1,4 @@
-package com.example.loading.view;
+package com.example.loading2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.loading.Loading;
-import com.example.loading.R;
 import com.example.loading.StatusView;
+import com.example.loading2.R;
 
 public class SingleViewActivity extends AppCompatActivity {
 

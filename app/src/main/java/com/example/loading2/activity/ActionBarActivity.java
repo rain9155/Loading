@@ -1,31 +1,28 @@
-package com.example.loading.activity;
+package com.example.loading2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
 
 import com.example.loading.Loading;
-import com.example.loading.R;
 import com.example.loading.StatusView;
+import com.example.loading2.R;
 
-public class ToolBarActivity extends AppCompatActivity {
+public class ActionBarActivity extends AppCompatActivity {
 
     StatusView mStatusView;
     Handler mHandler;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tool_bar);
+        setContentView(R.layout.activity_action_bar);
         mHandler = new Handler(Looper.getMainLooper());
 
-
         mStatusView = Loading.beginBuildStatusView(this)
-                .warp(findViewById(R.id.rl_home))
+                .warp(this)
                 .withReload(() -> {
                     mStatusView.showLoading();
                     mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
@@ -33,6 +30,7 @@ public class ToolBarActivity extends AppCompatActivity {
                 .create();
 
         mStatusView.showLoading();
-        mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
+        mHandler.postDelayed(() -> mStatusView.showError(), 3000);
+
     }
 }

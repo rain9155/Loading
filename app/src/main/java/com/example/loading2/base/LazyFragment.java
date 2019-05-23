@@ -1,4 +1,4 @@
-package com.example.loading.base;
+package com.example.loading2.base;
 
 import android.os.Bundle;
 import android.view.View;

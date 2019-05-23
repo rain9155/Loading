@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SingleFragmentActivity">
+    tools:context="com.example.loading2.fragment.SingleFragmentActivity">
 
     <fragment
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.loading.fragment.BlankFragment">
+        android:name="com.example.loading2.fragment.BlankFragment">
 
     </fragment>
 

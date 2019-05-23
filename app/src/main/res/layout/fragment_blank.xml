@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.BlankFragment">
+    tools:context="com.example.loading2.fragment.BlankFragment">
 
     <TextView
         android:id="@+id/tv_fragment"

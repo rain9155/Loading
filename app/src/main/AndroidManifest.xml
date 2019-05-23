@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.loading">
+    package="com.example.loading2">
 
     <application
-        android:name=".app.App"
+        android:name="com.example.loading2.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,17 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.SingleViewActivity" />
-        <activity android:name=".ViewActivity" />
-        <activity android:name=".fragment.ViewPagerActivity" />
-        <activity android:name=".fragment.SingleFragmentActivity" />
-        <activity android:name=".FragmentActivity" />
-        <activity android:name=".ActivityActivity" />
+        <activity android:name="com.example.loading2.view.SingleViewActivity" />
+        <activity android:name="com.example.loading2.ViewActivity" />
+        <activity android:name="com.example.loading2.fragment.ViewPagerActivity" />
+        <activity android:name="com.example.loading2.fragment.SingleFragmentActivity" />
+        <activity android:name="com.example.loading2.FragmentActivity" />
+        <activity android:name="com.example.loading2.ActivityActivity" />
         <activity
-            android:name=".activity.ToolBarActivity"
+            android:name="com.example.loading2.activity.ToolBarActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ActionBarActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.loading2.activity.ActionBarActivity" />
+        <activity android:name="com.example.loading2.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

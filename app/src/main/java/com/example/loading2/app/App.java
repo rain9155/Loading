@@ -1,9 +1,9 @@
-package com.example.loading.app;
+package com.example.loading2.app;
 
 import android.app.Application;
 
 import com.example.loading.Loading;
-import com.example.loading.R;
+import com.example.loading2.R;
 
 /**
  * Created by 陈健宇 at 2019/5/22

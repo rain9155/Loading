@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".view.SingleViewActivity">
+    tools:context="com.example.loading2.view.SingleViewActivity">
 
     <ImageView
         android:id="@+id/iv_view"

@@ -1,4 +1,4 @@
-package com.example.loading;
+package com.example.loading2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.loading.fragment.SingleFragmentActivity;
-import com.example.loading.fragment.ViewPagerActivity;
+import com.example.loading2.fragment.SingleFragmentActivity;
+import com.example.loading2.fragment.ViewPagerActivity;
 
 public class FragmentActivity extends AppCompatActivity {
 

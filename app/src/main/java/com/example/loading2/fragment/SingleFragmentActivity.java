@@ -1,10 +1,11 @@
-package com.example.loading.fragment;
+package com.example.loading2.fragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.loading.R;
+import com.example.loading2.R;
+
 
 public class SingleFragmentActivity extends AppCompatActivity {
 

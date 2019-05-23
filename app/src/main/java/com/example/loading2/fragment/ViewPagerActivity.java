@@ -1,4 +1,4 @@
-package com.example.loading.fragment;
+package com.example.loading2.fragment;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +9,8 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.View;
 
-import com.example.loading.R;
+import com.example.loading2.R;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.loading;
+package com.example.loading2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.loading.view.SingleViewActivity;
+import com.example.loading2.view.SingleViewActivity;
 
 public class ViewActivity extends AppCompatActivity {
 
