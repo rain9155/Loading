@@ -33,6 +33,6 @@ public class ToolBarActivity extends AppCompatActivity {
                 .create();
 
         mStatusView.showLoading();
-        mHandler.postDelayed(() -> mStatusView.showError(), 3000);
+        mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
     }
 }

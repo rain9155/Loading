@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.WrapActivity"></activity>
+        <activity android:name=".view.SingleViewActivity"></activity>
+        <activity android:name=".ViewActivity" />
+        <activity android:name=".fragment.ViewPagerActivity" />
+        <activity android:name=".fragment.SingleFragmentActivity" />
+        <activity android:name=".FragmentActivity" />
+        <activity android:name=".ActivityActivity" />
         <activity
             android:name=".activity.ToolBarActivity"
             android:theme="@style/AppTheme.NoActionBar" />
