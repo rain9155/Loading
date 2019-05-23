@@ -18,11 +18,11 @@
 * 提供切换加载中、空数据页、错误页或重新加载、内容页功能
 
 ## Preview
-
+![loading1](/screenshots/loading1.gif)
+![loading2](/screenshots/loading2.gif)
 ## DownLoad
-
 更多请下载查看，
-
+![qrcode](/screenshots/QRcode.png)
 {% asset_img QRcode.png QRcode %}
 
 ## How to install?
