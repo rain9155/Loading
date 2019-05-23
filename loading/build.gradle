@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+//2、添加下面两行
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.rain9155'
 
 android {
     compileSdkVersion 28

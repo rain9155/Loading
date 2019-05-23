@@ -15,8 +15,9 @@ import android.view.ViewGroup;
 import com.example.loading.Loading;
 import com.example.loading.R;
 import com.example.loading.StatusView;
+import com.example.loading.base.LazyFragment;
 
-public class BlankFragment extends Fragment {
+public class BlankFragment extends LazyFragment {
 
     StatusView mStatusView;
     Handler mHandler;
@@ -29,9 +30,12 @@ public class BlankFragment extends Fragment {
                 .warp(view)
                 .addErrorView(R.layout.error_view)
                 .create();
-        mStatusView.showLoading();
-        mHandler.postDelayed(() -> mStatusView.showError(), 3000);//模拟网络加载
         return mStatusView.getWrappedView();
     }
 
+    @Override
+    protected void onLazyLoadData() {
+        mStatusView.showLoading();
+        mHandler.postDelayed(() -> mStatusView.showError(), 3000);//模拟网络加载
+    }
 }

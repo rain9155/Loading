@@ -19,7 +19,6 @@
             android:text="A View"
             android:textAllCaps="false" />
 
-
     </LinearLayout>
 
 

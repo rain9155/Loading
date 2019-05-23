@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.SingleViewActivity"></activity>
+        <activity android:name=".view.SingleViewActivity" />
         <activity android:name=".ViewActivity" />
         <activity android:name=".fragment.ViewPagerActivity" />
         <activity android:name=".fragment.SingleFragmentActivity" />
