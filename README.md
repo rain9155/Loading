@@ -21,7 +21,7 @@
 ![loading1](/screenshots/loading1.gif)
 ![loading2](/screenshots/loading2.gif)
 ## DownLoad
-更多请下载查看，
+更多请下载查看:<br>
 ![qrcode](/screenshots/ORcode.png)
 ## How to install?
 
