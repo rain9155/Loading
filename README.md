@@ -1,4 +1,5 @@
 # Loading
+[![](https://jitpack.io/v/rain9155/Loading.svg)](https://jitpack.io/#rain9155/Loading)
 ###  一个简单的状态视图切换库，最多二行代码配置加载中、加载失败、空数据的视图，支持全局配置，欢迎大家star、fork，如有问题请[issue](<https://github.com/rain9155/Loading/issues>)。
 
 ## Pre
