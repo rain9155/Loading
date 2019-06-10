@@ -45,7 +45,7 @@ allprojects {
 在app目录的build.gradle中添加该库的引用：
 
 ```java
-implementation 'com.github.rain9155:Loading:v1.0'
+implementation 'com.github.rain9155:Loading:1.0.0'
 ```
 
 ## How to use?
