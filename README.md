@@ -19,8 +19,11 @@
 * 提供切换加载中、空数据页、错误页或重新加载、内容页功能
 
 ## Preview
+### Activity
 ![loading1](/screenshots/loading1.gif)
+### View
 ![loading2](/screenshots/loading2.gif)
+### Fragment
 ![loading3](/screenshots/loading3.gif)
 ## DownLoad
 更多请下载查看:<br>
