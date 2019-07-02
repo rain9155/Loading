@@ -21,6 +21,7 @@
 ## Preview
 ![loading1](/screenshots/loading1.gif)
 ![loading2](/screenshots/loading2.gif)
+![loading3](/screenshots/loading3.gif)
 ## DownLoad
 更多请下载查看:<br>
 ![qrcode](/screenshots/ORcode.png)
@@ -61,7 +62,7 @@ StatusView中相应方法说明如下：
 | showError()        | 显示错误视图 / 重新加载视图                    |
 | showEmpty()        | 显示空数据视图                                 |
 | showCustom()       | 显示自定义视图                                 |
-| getCurrentStatus() | 获得当前的视图状态，返回一个Status，它一个枚举 |
+| getCurrentStatus() | 获得当前的视图状态，返回一个[Status](https://github.com/rain9155/Loading/blob/master/loading/src/main/java/com/example/loading/Status.java)，它一个枚举，里面定义了各种状态值 |
 
 Loading中相应方法说明如下：
 
@@ -169,11 +170,21 @@ public class ActionBarActivity extends AppCompatActivity {
 
 这里需要说明的是，在单独页面add的状态视图可以覆盖在Application中add的状态视图，所以如果你有些状态视图是全局统一的，就在Application中配置，如果是单独为页面设计的就单独在页面里add。
 
+### 3、其他方法
+你可以获得目前页面处于哪个状态，调用getCurrentStatus()即可，它返回一个Status，如下：
+```java
+if(getCurrentStatus == Status.ERROR){
+    //todo
+}
+```
 更多使用请参考[Demo](<https://github.com/rain9155/Loading/tree/master/app/src/main/java/com/example/loading>).
 
 ## Change log
-
-
+2109-6-10 1.0.0
+可以配置加载中、加载失败、空数据
+2109-7-2 1.0.1
+增加可以获取当前视图状态
+增加可以添加一个自定义视图
 
 ## License
 
