@@ -22,8 +22,7 @@ public class SingleViewActivity extends AppCompatActivity {
 
         mHandler = new Handler(Looper.getMainLooper());
         mStatusView = Loading.beginBuildStatusView(this)
-                .warp(findViewById(R.id.iv_view))
-                .addEmptyView(R.layout.empty_view)
+                .warpView(findViewById(R.id.iv_view))
                 .create();
         mStatusView.showLoading();
         mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);//模拟网络加载

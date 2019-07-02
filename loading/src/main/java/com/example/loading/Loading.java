@@ -15,10 +15,11 @@ import android.widget.FrameLayout;
  */
 public class Loading {
 
-    private final SparseIntArray mStatusViews = new SparseIntArray(3){{
-        put(StatusView.STATUS_LOADING, -1);
-        put(StatusView.STATUS_ERROR, -1);
-        put(StatusView.STATUS_EMPTY, -1);
+    private final SparseIntArray mStatusViews = new SparseIntArray(4){{
+        put(Status.LOADING.ordinal(), -1);
+        put(Status.ERROR.ordinal(), -1);
+        put(Status.EMPTY.ordinal(), -1);
+        put(Status.CUSTOM.ordinal(), -1);
     }};
     private static volatile Loading sintance = null;
 
@@ -47,11 +48,13 @@ public class Loading {
         private View mLoadingView;
         private View mErrorView;
         private View mEmptyView;
+        private View mCustomView;
         private View.OnClickListener mReloadClick;
         private int mRetryId = -1;
         private int mLoadingViewId = -1;
         private int mErrorViewId = -1;
         private int mEmptyViewId = -1;
+        private int mCustomViewId = -1;
         private Context mContext;
         private LayoutInflater mInflater;
 
@@ -65,25 +68,46 @@ public class Loading {
             mLoading = Loading.getInstance();
         }
 
+        /**
+         * 添加一个加载中的视图
+         * @param id 视图id
+         */
         public Builder addLoadingView(int id){
             mLoadingViewId = id;
             return this;
         }
 
+        /**
+         * 添加一个加载错误的视图
+         * @param id 视图id
+         */
         public Builder addErrorView(int id){
             mErrorViewId = id;
             return this;
         }
 
+        /**
+         * 添加一个空数据视图
+         * @param id 视图id
+         */
         public Builder addEmptyView(int id){
             mEmptyViewId = id;
             return this;
         }
 
         /**
+         * 添加一个自定义的视图
+         * @param id 视图id
+         */
+        public Builder addCustomView(int id){
+            mCustomViewId = id;
+            return this;
+        }
+
+        /**
          * 取出Activity中的包裹着contentView的ViewGroup
          */
-        public Builder warp(Activity activity){
+        public Builder warpActivity(Activity activity){
             mWarppedView = activity.findViewById(android.R.id.content);
             return this;
         }
@@ -92,7 +116,7 @@ public class Loading {
          * 新建一个ViewGroup包裹着传进来的View
          * @param view 要被包裹的View
          */
-        public Builder warp(View view){
+        public Builder warpView(View view){
             //新建一个ViewGroup
             FrameLayout wrapper = new FrameLayout(view.getContext());
             ViewGroup.LayoutParams viewLp = view.getLayoutParams();
@@ -125,10 +149,14 @@ public class Loading {
             return this;
         }
 
+        /**
+         * 暂存各种视图id到缓存
+         */
         public void commit(){
-            mLoading.mStatusViews.put(StatusView.STATUS_LOADING, mLoadingViewId);
-            mLoading.mStatusViews.put(StatusView.STATUS_ERROR, mErrorViewId);
-            mLoading.mStatusViews.put(StatusView.STATUS_EMPTY, mEmptyViewId);
+            mLoading.mStatusViews.put(Status.LOADING.ordinal(), mLoadingViewId);
+            mLoading.mStatusViews.put(Status.ERROR.ordinal(), mErrorViewId);
+            mLoading.mStatusViews.put(Status.EMPTY.ordinal(), mEmptyViewId);
+            mLoading.mStatusViews.put(Status.CUSTOM.ordinal(), mCustomViewId);
         }
 
         /**
@@ -136,18 +164,19 @@ public class Loading {
          * @return 创建好的StatusView实例
          */
         public StatusView create(){
-
             verify();
+            return budiler(new StatusView.Builder(mContext)).create();
+        }
 
-            StatusView.Builder builder = new StatusView.Builder(mContext);
+        private StatusView.Builder budiler(StatusView.Builder builder) {
             builder.setContentView(mWarppedView);
 
-            if((mLoadingView = getView(mLoadingViewId, StatusView.STATUS_LOADING)) != null){
+            if((mLoadingView = getView(mLoadingViewId, Status.LOADING)) != null){
                 removeParent(mLoadingView.getParent(), mLoadingView);
                 builder.setLoadingView(mLoadingView);
             }
 
-            if((mErrorView = getView(mErrorViewId, StatusView.STATUS_ERROR)) != null){
+            if((mErrorView = getView(mErrorViewId, Status.ERROR)) != null){
                 if(mReloadClick != null && mRetryId != -1){
                     View reloadView = mErrorView.findViewById(mRetryId);
                     if(reloadView != null)
@@ -158,16 +187,21 @@ public class Loading {
                 builder.setErrorView(mErrorView);
             }
 
-            if((mEmptyView = getView(mEmptyViewId, StatusView.STATUS_EMPTY)) != null){
+            if((mEmptyView = getView(mEmptyViewId, Status.EMPTY)) != null){
                 removeParent(mEmptyView.getParent(), mEmptyView);
                 builder.setEmptyView(mEmptyView);
             }
 
-            return builder.create();
+            if((mCustomView = getView(mCustomViewId, Status.CUSTOM)) != null){
+                removeParent(mCustomView.getParent(), mCustomView);
+                builder.setCustomView(mCustomView);
+            }
+
+            return builder;
         }
 
         private void verify() {
-            if(mWarppedView == null) throw new NullPointerException("must warp Activity or Fragment or View");
+            if(mWarppedView == null) throw new NullPointerException("must warpActivity Activity or Fragment or View");
             if(mInflater == null) throw new NullPointerException("can't call Loading.beginBuildCommit() before create()");
         }
 
@@ -176,9 +210,9 @@ public class Loading {
                 ((ViewGroup)parent).removeView(removeView);
         }
 
-        private View getView(int builderStatus, int cacheStatus){
+        private View getView(int builderStatus, Status cacheStatus){
             if(builderStatus != -1) return mInflater.inflate(builderStatus, null);
-            int cacheId = mLoading.mStatusViews.get(cacheStatus);
+            int cacheId = mLoading.mStatusViews.get(cacheStatus.ordinal());
             if(cacheId != -1) return mInflater.inflate(cacheId, null);
             return null;
         }

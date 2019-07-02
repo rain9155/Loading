@@ -23,8 +23,8 @@ public class BlankFragment extends LazyFragment {
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
         mHandler = new Handler(Looper.getMainLooper());
         mStatusView = Loading.beginBuildStatusView(view.getContext())
-                .warp(view)
-                .addErrorView(R.layout.error_view)
+                .warpView(view)
+                .addCustomView(R.layout.custom_view)
                 .create();
         return mStatusView.getWrappedView();
     }
@@ -32,6 +32,6 @@ public class BlankFragment extends LazyFragment {
     @Override
     protected void onLazyLoadData() {
         mStatusView.showLoading();
-        mHandler.postDelayed(() -> mStatusView.showError(), 3000);//模拟网络加载
+        mHandler.postDelayed(() -> mStatusView.showCustom(), 3000);//模拟网络加载
     }
 }

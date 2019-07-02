@@ -13,23 +13,16 @@ import android.widget.RelativeLayout;
  */
 public class StatusView extends RelativeLayout {
 
-    private static final String TAG = "StatusView";
-
-    public static final int STATUS_SUCCESS = 0X00;
-    public static final int STATUS_LOADING = 0X01;
-    public static final int STATUS_ERROR = 0X02;
-    public static final int STATUS_EMPTY = 0x03;
-    private static int mCurrentStatus = STATUS_SUCCESS;
+    private static final LayoutParams DEFAULT_LP = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
     protected View loadingView;
     protected View contentView;
     protected View errorView;
     protected View emptyView;
+    protected View customView;
     protected OnClickListener reloadClick;
     protected View wrappedView;
-    private static final LayoutParams DEFAULT_LP = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-    private static final LayoutParams DEFAULT_LP2 = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
+    private Status mCurrentStatus = Status.SUCCESS;
 
     public StatusView(Context context) {
         super(context, null);
@@ -43,38 +36,39 @@ public class StatusView extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if(reloadClick != null) reloadClick = null;
-        clear(contentView, loadingView, emptyView, errorView);
-    }
-
     public void showSuccess(){
-        showView(STATUS_SUCCESS);
+        showView(Status.SUCCESS);
     }
 
     public void showLoading(){
-        showView(STATUS_LOADING);
+        showView(Status.LOADING);
     }
 
     public void showError(){
-        showView(STATUS_ERROR);
+        showView(Status.ERROR);
     }
 
     public void showEmpty(){
-        showView(STATUS_EMPTY);
+        showView(Status.EMPTY);
+    }
+
+    public void showCustom(){
+        showView(Status.CUSTOM);
     }
 
     public View getWrappedView() {
         return wrappedView;
     }
 
+    public Status getCurrentStatus(){
+        return mCurrentStatus;
+    }
+
     /**
      * 根据status显示View视图
      * @param status 将要显示的View视图的status
      */
-    private void showView(int status){
+    private void showView(Status status){
         if(Looper.myLooper() == Looper.getMainLooper()){
             changeViewByStatus(status);
         }else {
@@ -86,15 +80,22 @@ public class StatusView extends RelativeLayout {
      * 根据status改变View视图
      * @param status 将要显示的View视图的status
      */
-    private void changeViewByStatus(int status){
+    private void changeViewByStatus(Status status){
         if(mCurrentStatus == status) return;
-        if(loadingView != null) if(status == STATUS_LOADING ) {loadingView.setVisibility(VISIBLE); loadingView.bringToFront();} else loadingView.setVisibility(GONE);
-        if(errorView != null) if(status == STATUS_ERROR) {errorView.setVisibility(VISIBLE);loadingView.bringToFront();} else errorView.setVisibility(GONE);
-        if(emptyView != null) if(status == STATUS_EMPTY) {emptyView.setVisibility(VISIBLE);emptyView.bringToFront();} else emptyView.setVisibility(GONE);
-        if(status == STATUS_SUCCESS) {contentView.setVisibility(VISIBLE); contentView.bringToFront();} else contentView.setVisibility(GONE);
+        if(loadingView != null) if(status == Status.LOADING ) loadingView.setVisibility(VISIBLE);  else loadingView.setVisibility(GONE);
+        if(errorView != null) if(status == Status.ERROR) errorView.setVisibility(VISIBLE); else errorView.setVisibility(GONE);
+        if(emptyView != null) if(status == Status.EMPTY) emptyView.setVisibility(VISIBLE); else emptyView.setVisibility(GONE);
+        if(customView != null) if(status == Status.CUSTOM) customView.setVisibility(VISIBLE); else customView.setVisibility(GONE);
+        if(status == Status.SUCCESS) contentView.setVisibility(VISIBLE); else contentView.setVisibility(GONE);
         mCurrentStatus = status;
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if(reloadClick != null) reloadClick = null;
+        clear(contentView, loadingView, emptyView, errorView);
+    }
 
     /**
      * 把StatusView中的View全部移除
@@ -155,6 +156,16 @@ public class StatusView extends RelativeLayout {
             mStatusView.emptyView = emptyView;
             mStatusView.emptyView.setVisibility(GONE);
             mStatusView.addView(emptyView, DEFAULT_LP);
+            return this;
+        }
+
+        /**
+         * 把customView添加到StatusView中，
+         */
+        public Builder setCustomView(View customView){
+            mStatusView.customView = customView;
+            mStatusView.customView.setVisibility(GONE);
+            mStatusView.addView(customView, DEFAULT_LP);
             return this;
         }
 

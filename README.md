@@ -1,6 +1,6 @@
 # Loading
 [![](https://jitpack.io/v/rain9155/Loading.svg)](https://jitpack.io/#rain9155/Loading)
-###  一个简单的状态视图切换库，最多二行代码配置加载中、加载失败、空数据的视图，支持全局配置，欢迎大家star、fork，如有问题请[issue](<https://github.com/rain9155/Loading/issues>)。
+###  一个简单的状态视图切换库，最多二行代码配置加载中、加载失败、空数据等视图，支持全局配置，欢迎大家star、fork，如有问题请[issue](<https://github.com/rain9155/Loading/issues>)。
 
 ## Pre
 
@@ -45,7 +45,7 @@ allprojects {
 在app目录的build.gradle中添加该库的引用：
 
 ```java
-implementation 'com.github.rain9155:Loading:1.0.0'
+implementation 'com.github.rain9155:Loading:1.0.1'
 ```
 
 ## How to use?
@@ -54,24 +54,27 @@ implementation 'com.github.rain9155:Loading:1.0.0'
 
 StatusView中相应方法说明如下：
 
-| 方法          | s说明                       |
-| :------------ | --------------------------- |
-| showLoading() | 显示加载中视图              |
-| showSuccess() | 显示内容视图                |
-| showError()   | 显示错误视图 / 重新加载视图 |
-| showEmpty()   | 显示空数据视图              |
+| 方法               | s说明                                          |
+| :----------------- | ---------------------------------------------- |
+| showLoading()      | 显示加载中视图                                 |
+| showSuccess()      | 显示内容视图                                   |
+| showError()        | 显示错误视图 / 重新加载视图                    |
+| showEmpty()        | 显示空数据视图                                 |
+| showCustom()       | 显示自定义视图                                 |
+| getCurrentStatus() | 获得当前的视图状态，返回一个Status，它一个枚举 |
 
 Loading中相应方法说明如下：
 
-| 方法                                         | 说明                                                         |
-| :------------------------------------------- | :----------------------------------------------------------- |
-| addLoadingView()                             | 添加加载中视图                                               |
-| warp(Activity activity) / wrap(View view)    | 添加内容视图，如果是Activity就直接串Activity的实例，如果是Fragment就传Fragment的View布局，如果是View就直接传View |
-| addErrorView()                               | 添加错误视图 / 重新加载视图                                  |
-| addEmptyView()                               | 添加空数据视图                                               |
-| withReload(final Runnable task, int retryId) | 如果添加的错误视图是重新加载视图，那么这里可以传一个触发重新加载逻辑的task进去，retryId就是你触发重新加载的控件Id |
-| beginBuildStatusView() / create()            | 这两个方法要配对使用，表示创建一个StatusView                 |
-| beginBuildCommit() / commit()                | 这两个方法要配对使用，在全局配置时使用，表示把状态视图暂时添加到Loading中 |
+| 方法                                                  | 说明                                                         |
+| :---------------------------------------------------- | :----------------------------------------------------------- |
+| addLoadingView()                                      | 添加加载中视图                                               |
+| warpActiivty(Activity activity) / wrapView(View view) | 添加内容视图，如果是Activity就直接串Activity的实例，如果是Fragment就传Fragment的View布局，如果是View就直接传View |
+| addErrorView()                                        | 添加错误视图 / 重新加载视图                                  |
+| addEmptyView()                                        | 添加空数据视图                                               |
+| withReload(final Runnable task, int retryId)          | 如果添加的错误视图是重新加载视图，那么这里可以传一个触发重新加载逻辑的task进去，retryId就是你触发重新加载的控件Id |
+| beginBuildStatusView() / create()                     | 这两个方法要配对使用，表示创建一个StatusView                 |
+| beginBuildCommit() / commit()                         | 这两个方法要配对使用，在全局配置时使用，表示把状态视图暂时添加到Loading中 |
+| addCustomView()                                       | 添加一个自定义的视图                                         |
 
 下面以Activity为例。
 
@@ -89,6 +92,7 @@ public class App extends Application {
                 .addEmptyView(R.layout.empty_view)
                 .addLoadingView(R.layout.loading_view)
                 .addErrorView(R.layout.reload_view)
+                .addCustomView(R.layout.custom_view)
                 .commit();
     }
 }
@@ -132,6 +136,7 @@ public class ActionBarActivity extends AppCompatActivity {
 * mStatusView.showSuccess();
 * mStatusView.showError();
 * mStatusView.showEmpty();
+* mStatusView.showCustom();
 
 ### 2、单独为每个页面（Activity/Fragment/View）配置状态视图，并创建StatusView
 
@@ -165,6 +170,10 @@ public class ActionBarActivity extends AppCompatActivity {
 这里需要说明的是，在单独页面add的状态视图可以覆盖在Application中add的状态视图，所以如果你有些状态视图是全局统一的，就在Application中配置，如果是单独为页面设计的就单独在页面里add。
 
 更多使用请参考[Demo](<https://github.com/rain9155/Loading/tree/master/app/src/main/java/com/example/loading>).
+
+## Change log
+
+
 
 ## License
 

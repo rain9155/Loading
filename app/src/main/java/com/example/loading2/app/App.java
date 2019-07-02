@@ -18,6 +18,7 @@ public class App extends Application {
                 .addEmptyView(R.layout.empty_view)
                 .addLoadingView(R.layout.loading_view)
                 .addErrorView(R.layout.reload_view)
+                .addCustomView(R.layout.custom_view)
                 .commit();
     }
 }

@@ -25,14 +25,11 @@ public class ToolBarActivity extends AppCompatActivity {
 
 
         mStatusView = Loading.beginBuildStatusView(this)
-                .warp(findViewById(R.id.rl_home))
-                .withReload(() -> {
-                    mStatusView.showLoading();
-                    mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
-                }, R.id.iv_reload)
+                .warpView(findViewById(R.id.rl_home))
+                .addEmptyView(R.layout.empty_view)
                 .create();
 
         mStatusView.showLoading();
-        mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
+        mHandler.postDelayed(() -> mStatusView.showEmpty(), 3000);
     }
 }

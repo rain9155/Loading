@@ -22,7 +22,7 @@ public class ActionBarActivity extends AppCompatActivity {
         mHandler = new Handler(Looper.getMainLooper());
 
         mStatusView = Loading.beginBuildStatusView(this)
-                .warp(this)
+                .warpActivity(this)
                 .withReload(() -> {
                     mStatusView.showLoading();
                     mHandler.postDelayed(() -> mStatusView.showSuccess(), 3000);
