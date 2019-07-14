@@ -182,13 +182,6 @@ if(getCurrentStatus == Status.ERROR){
 ```
 更多使用请参考[Demo](<https://github.com/rain9155/Loading/tree/master/app/src/main/java/com/example/loading>).
 
-## Change log
-2109-6-10 1.0.0
-可以配置加载中、加载失败、空数据
-2109-7-2 1.0.1
-增加可以获取当前视图状态
-增加可以添加一个自定义视图
-
 ## License
 
 ```
